@@ -187,7 +187,7 @@ export class Terminal extends AppMock {
     }
 
     public return() {
-        this.newLine(`${this.wrappedPrompt} ${this.wrappedCursor()}`);
+        this.newLine(`${this.wrappedPrompt()} ${this.wrappedCursor()}`);
         this._currentLineEndWithCursor = true;
         this.scrollToBottom();
         return Promise.resolve();

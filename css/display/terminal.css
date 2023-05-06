@@ -4,10 +4,7 @@
 
 .terminal-window-content {
     word-break: break-all;
-    overflow-x: hidden;
     position: relative;
-    display: flex;
-    flex-direction: column;
 }
 
 .terminal-window-content ul {
@@ -15,7 +12,6 @@
     list-style-type: none;
     padding: 0;
     overflow-y: auto;
-    overflow-x: hidden;
     position: absolute;
     width: 100%;
     height: 100%;
