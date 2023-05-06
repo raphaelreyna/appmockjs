@@ -1,0 +1,93 @@
+:root {
+    --top-width: 390px;
+    --top-height: 240px;
+    --top-border-radius: 15px 15px 0 0;
+    --bottom-width: 435px;
+    --color-pink: #eb4c4d;
+    --color-green: #71ba9e;
+    --color-yellow: #f19b31;
+    --color-purple: #8b92ac;
+    --color-dark-gray: #b2b2b2;
+    --color-black: #1c1c1c;
+}
+
+.laptop * {
+    margin: 0;
+    padding: 0;
+}
+
+.laptop html {
+    box-sizing: border-box;
+}
+
+.laptop *,
+.laptop *::before,
+.laptop *::after {
+    box-sizing: inherit;
+}
+
+.laptop-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px;
+}
+
+#top {
+    width: var(--top-width);
+    height: var(--top-height);
+    background: #212733;
+    border-radius: var(--top-border-radius);
+    position: relative;
+}
+
+#case {
+    width: var(--top-width);
+    height: var(--top-height);
+    background: transparent;
+    border: 15px solid var(--color-black);
+    border-radius: var(--top-border-radius);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    font-size: smaller;
+}
+
+#top::before {
+    width: 5px;
+    height: 5px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    content: "";
+    top: 4px;
+    left: 49%;
+    z-index: 40;
+}
+
+#keyboard {
+    width: var(--bottom-width);
+    height: 10px;
+    background: #d3d1d2;
+    position: relative;
+}
+
+#keyboard::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 44%;
+    width: 70px;
+    height: 5px;
+    background: var(--color-dark-gray);
+    border-radius: 0 0 3px 3px;
+}
+
+#bottom {
+    width: var(--bottom-width);
+    height: 8px;
+    background: var(--color-dark-gray);
+    border-radius: 0 0 20px 20px;
+}

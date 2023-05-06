@@ -1,0 +1,52 @@
+.browser-window {
+    font-family: Arial;
+    background-color: white;
+}
+
+.browser-window-chrome {
+    height: 25px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/* Style the input field */
+.browser-window-chrome-input {
+    border-radius: 5px;
+    border: 1px;
+    border-style: solid;
+    background-color: white;
+    color: #555;
+    padding-top: 0;
+    padding-left: 0.25rem;
+    margin-right: 0.3rem;
+    margin-left: 0.15rem;
+    border-color: #aaa;
+    flex: 1;
+    min-width: 0;
+}
+
+.browser-controls-container {
+    display: flex;
+    justify-content: left;
+    margin-left: 0.25rem;
+}
+
+.browser-control {
+    padding: 0;
+    margin: 0 0.25rem 0 0.25rem;
+}
+
+.browser-window-content {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.browser-window-content iframe {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border: none;
+}

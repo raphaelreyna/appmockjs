@@ -1,0 +1,107 @@
+.window {
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #7d7d7d9c;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.window-fullscreen {
+    width: 100%;
+    height: 100%;
+    border-style: none;
+    border-radius: 0;
+}
+
+.window-content {
+    width: 100%;
+    height: 100%;
+    flex-grow: 100%;
+}
+
+.window-chrome {
+    background: #e0e0e0;
+    border-bottom: 1px;
+    border-color: #aaa;
+    border-style: none none solid none;
+    display: flex;
+    align-items: center;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    margin: 0;
+    padding: 0.4rem 0px 0.4rem 0px;
+    position: relative;
+    min-height: 10px;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.6);
+    flex-shrink: 0;
+}
+
+.window-chrome-title {
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    color:rgba(0, 0, 0, 0.75);
+}
+
+.window-chrome-button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 40px;
+    background-color: #e0e0e0;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-40%);
+    margin-right: 0.5rem;
+}
+
+.dot {
+    height: 9px;
+    width: 9px;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 0;
+}
+
+.red-dot {
+    background-color: #f2321d;
+}
+
+.yellow-dot {
+    background-color: #edcc14;
+}
+
+.green-dot {
+    background-color: #20c520;
+}
+
+.small-font {
+    font-size: small;
+}
+
+.x-small-font {
+    font-size: x-small;
+}
+
+.xx-small-font {
+    font-size: xx-small;
+}
+
+.not-selectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }

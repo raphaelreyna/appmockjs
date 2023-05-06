@@ -1,0 +1,34 @@
+export function getFirstParentWithClass(element: HTMLElement, className: string): HTMLElement | null {
+    let parent = element.parentNode;
+
+    while (parent !== null && (parent instanceof HTMLElement)) {
+        if (parent.classList && parent.classList.contains(className)) {
+            return parent;
+        }
+        parent = parent.parentNode;
+    }
+
+    return null; // Return null if no parent with the specified class was found
+}
+
+export function activateScriptTags(el: ChildNode | HTMLScriptElement) {
+    if (el instanceof HTMLScriptElement) {
+        el.parentNode?.replaceChild(cloneScript(el), el);
+    } else {
+        var i = -1, children = el.childNodes;
+        while (++i < children.length) {
+            activateScriptTags(children[i]);
+        }
+    }
+}
+
+function cloneScript(el: HTMLScriptElement) {
+    var script = document.createElement("script");
+    script.text = el.innerHTML;
+
+    var i = -1, attrs = el.attributes, attr;
+    while (++i < attrs.length) {
+        script.setAttribute((attr = attrs[i]).name, attr.value);
+    }
+    return script;
+}

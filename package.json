@@ -1,0 +1,30 @@
+{
+  "name": "appmockjs",
+  "version": "1.0.0",
+  "description": "A toolkit for mocking and scripting apps on various devices in the browser.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./build.mjs",
+    "dev-server": "npx http-server ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaelreyna/appmockjs.git"
+  },
+  "author": "Raphael Reyna",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raphaelreyna/appmockjs/issues"
+  },
+  "homepage": "https://github.com/raphaelreyna/appmockjs#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "tsup": "^6.6.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@stardazed/streams-polyfill": "^2.4.0",
+    "esbuild": "0.17.6",
+    "uglify-js": "^3.17.4"
+  }
+}
