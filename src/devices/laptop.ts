@@ -5,6 +5,12 @@ export class Laptop extends HTMLElement {
     constructor() {
         super();
         this.classList.add(laptop.laptop);
+        if (!this.style.width) {
+            this.style.width = '435px';
+        }
+        if (!this.style.height) {
+            this.style.height = '250px';
+        }
     }
 
     connectedCallback() {

@@ -1,12 +1,6 @@
 :root {
-    --top-width: 390px;
-    --top-height: 240px;
     --top-border-radius: 15px 15px 0 0;
     --bottom-width: 435px;
-    --color-pink: #eb4c4d;
-    --color-green: #71ba9e;
-    --color-yellow: #f19b31;
-    --color-purple: #8b92ac;
     --color-dark-gray: #b2b2b2;
     --color-black: #1c1c1c;
 }
@@ -27,19 +21,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 .top {
-    width: var(--top-width);
-    height: var(--top-height);
+    width: 89%;
+    height: 96%;
     background: #212733;
     border-radius: var(--top-border-radius);
     position: relative;
 }
 
 .case {
-    width: var(--top-width);
-    height: var(--top-height);
+    width: 100%;
+    height: 100%;
     background: transparent;
     border: 15px solid var(--color-black);
     border-radius: var(--top-border-radius);
@@ -64,6 +60,7 @@
 
 .finger-bezel {
     position: relative;
+    width: 100%;
 }
 
 .finger-bezel::before {
@@ -78,7 +75,7 @@
 }
 
 .bottom {
-    width: var(--bottom-width);
+    width: 100%;
     height: 10px;
     background: var(--color-dark-gray);
     border-radius: 0 0 20px 20px;
