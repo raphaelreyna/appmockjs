@@ -11,18 +11,14 @@
     --color-black: #1c1c1c;
 }
 
-.laptop * {
-    margin: 0;
-    padding: 0;
-}
-
-.laptop html {
+.laptop {
     box-sizing: border-box;
+    position: absolute;
 }
 
 .laptop *,
-.laptop *::before,
-.laptop *::after {
+.laptop .case::before,
+.laptop .case::after {
     box-sizing: inherit;
 }
 
@@ -31,10 +27,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 200px;
 }
 
-#top {
+.top {
     width: var(--top-width);
     height: var(--top-height);
     background: #212733;
@@ -42,7 +37,7 @@
     position: relative;
 }
 
-#case {
+.case {
     width: var(--top-width);
     height: var(--top-height);
     background: transparent;
@@ -55,7 +50,7 @@
     font-size: smaller;
 }
 
-#top::before {
+.top::before {
     width: 5px;
     height: 5px;
     background: black;
@@ -67,27 +62,24 @@
     z-index: 40;
 }
 
-#keyboard {
-    width: var(--bottom-width);
-    height: 10px;
-    background: #d3d1d2;
+.finger-bezel {
     position: relative;
 }
 
-#keyboard::before {
+.finger-bezel::before {
     position: absolute;
     content: "";
     top: 0;
     left: 44%;
     width: 70px;
     height: 5px;
-    background: var(--color-dark-gray);
+    background: #969696;
     border-radius: 0 0 3px 3px;
 }
 
-#bottom {
+.bottom {
     width: var(--bottom-width);
-    height: 8px;
+    height: 10px;
     background: var(--color-dark-gray);
     border-radius: 0 0 20px 20px;
 }

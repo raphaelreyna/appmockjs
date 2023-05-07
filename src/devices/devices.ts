@@ -2,8 +2,8 @@ import { Laptop } from "./laptop";
 import { Smartphone } from "./smartphone";
 
 export function registerDevices() {
-    customElements.define('fa-laptop', Laptop);
-    customElements.define('fa-smartphone', Smartphone);
+    customElements.define('amjs-laptop', Laptop);
+    customElements.define('amjs-smartphone', Smartphone);
 }
 
 export { Laptop, Smartphone };

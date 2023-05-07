@@ -4,6 +4,7 @@ import laptop from "../../css/devices/laptop.module.scss";
 export class Laptop extends HTMLElement {
     constructor() {
         super();
+        this.classList.add(laptop.laptop);
     }
 
     connectedCallback() {
@@ -17,12 +18,12 @@ export class Laptop extends HTMLElement {
     private render(): string {
         return `
 <section class="${laptop.laptopContainer}">
-    <div class="${laptop.top}">
+    <div class="${laptop.top} ${laptop.rotatingDiv}">
         <div class="${laptop.case}">
             ${this.innerHTML}
         </div>
     </div>
-    <div class="${laptop.keyboard}">
+    <div class="${laptop.fingerBezel}">
     <div class="${laptop.bottom}">
 </section>
 `

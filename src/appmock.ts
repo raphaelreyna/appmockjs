@@ -9,7 +9,7 @@ export abstract class AppMock extends HTMLElement {
         if (this.hasAttribute('fullscreen')) {
             this.style.width = '100%';
             this.style.height = '100%';
-            this.classList.add('window-fullscreen');
+            this.classList.add(window.windowFullscreen);
         }
     }
 
