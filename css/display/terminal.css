@@ -5,6 +5,7 @@
 .terminal-window-content {
     word-break: break-all;
     position: relative;
+    background-color: blue;
 }
 
 .terminal-window-content ul {
@@ -32,10 +33,6 @@
 
 .scrollbar::-webkit-scrollbar-track {
     background-color: transparent;
-}
-
-.scrollbar::-webkit-scrollbar-track:hover {
-    background-color: #f4f4f4
 }
 
 .scrollbar::-webkit-scrollbar-thumb {

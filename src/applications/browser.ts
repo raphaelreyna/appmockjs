@@ -2,7 +2,7 @@ import { AppMock } from "../appmock";
 import { appendAttribute } from "../document/attributes";
 import { typeValue } from "../animation/animation";
 
-class Browser extends AppMock {
+export class Browser extends AppMock {
     private _urlInput: HTMLInputElement | null = null;
     private _content: HTMLElement | null = null;
 

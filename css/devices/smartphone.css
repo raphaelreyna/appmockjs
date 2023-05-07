@@ -12,6 +12,7 @@
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
     margin: 0;
     padding: 0;
+    background-color: #222222;
 }
 
 .smartphone:before {
@@ -24,6 +25,9 @@
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     background-color: #313742;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
 }
 
 .smartphone:after {
@@ -31,7 +35,7 @@
     display: block;
     width: 12px;
     height: 12px;
-    margin: 24px auto;
+    margin: 5px auto;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -43,24 +47,32 @@
 
 .smartphone-screen {
     display: flex;
+    flex-shrink: 0;
     flex-direction: column;
     width: 100%;
     height: 100%;
+    align-self: flex-end;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1),
+        0 0 25px rgba(255, 255, 255, 0.05);
+}
+
+.smartphone-screen-off {
+    visibility: hidden;
+    box-shadow: 0;
 }
 
 .smartphone-content {
-    margin: 1.1rem 0 0 0;
-    position: relative;
-    padding-top: 1rem;
-    flex: 1;
     font-size: x-small;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    position: relative;
 }
 
 .smartphone-status-bar {
     width: 100%;
-    height: 0.8rem;
+    height: 0.9rem;
     background-color: #313742;
-    position: absolute;
     top: 0;
     left: 0;
     display: flex;
@@ -68,7 +80,7 @@
     align-items: center;
     color: white;
     font-size: 7px;
-    padding: 3px 3px 2px 3px;
+    font-family: Arial; 
 }
 
 .smartphone-bezel {
@@ -83,4 +95,12 @@
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+}
+
+.smartphone-status-bar-reception-bars {
+    margin-left: 0.25rem;
+}
+
+.smartphone-status-bar-battery {
+    margin-right: 0.25rem;
 }

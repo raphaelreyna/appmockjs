@@ -63,12 +63,9 @@ export class Terminal extends AppMock {
     const ul = terminalWindow.querySelector("ul");
     let shouldScrollToBottom = true;
 
-    // Function to scroll to the bottom of the scroll container
     function scrollToBottom() {
         ul.scrollTop = ul.scrollHeight;
     }
-
-    scrollToBottom();
 
     ul.addEventListener('scroll', () => {
         shouldScrollToBottom = ul.scrollTop + ul.clientHeight !== ul.scrollHeight;
@@ -77,13 +74,7 @@ export class Terminal extends AppMock {
         }
     });
 
-    // Optionally, you can listen for new content being added and scroll to the bottom
-    // For example, when receiving a new message in a chat application
-    function onNewContentAdded() {
-        if (!shouldScrollToBottom) {
-            scrollToBottom();
-        }
-    }
+    scrollToBottom();
 `;
     }
 

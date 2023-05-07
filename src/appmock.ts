@@ -7,16 +7,21 @@ export abstract class AppMock extends HTMLElement {
         if (this.hasAttribute('fullscreen')) {
             this.style.width = '100%';
             this.style.height = '100%';
+            this.classList.add('window-fullscreen');
         }
     }
 
     connectedCallback() {
-        if (!this.isConnected) {
+        if (!this.isConnected || this.hasAttribute('rendered')) {
             return;
         }
         setInnerHTML(this, this.render());
+        this.setAttribute('rendered', '');
     }
 
+    // the script returned by this method will be wrapped in an IIFE (function() { ... })();
+    // and added to as the last child of this element.
+    // once the script is executed, the script element will be removed.
     protected postScript(): string {
         return '';
     }
@@ -31,7 +36,11 @@ export abstract class AppMock extends HTMLElement {
         ${this.renderContent()}
     </div>
     <script>
-        ${this.postScript()}
+        (function() {
+            ${this.postScript()}
+        })();
+        const script = document.currentScript;
+        script.parentElement.removeChild(script);
     </script>
 `;
     }
@@ -103,12 +112,17 @@ function attributeToString(name: string, value?: string): string {
     return attrString;
 }
 
-function setInnerHTML(elm: HTMLElement, html: string) {
+export function setInnerHTML(elm: HTMLElement, html: string) {
     elm.innerHTML = html;
     
     Array.from(elm.querySelectorAll("script"))
       .forEach( oldScriptEl => {
+        if (oldScriptEl.hasAttribute("amjs-processed")) {
+            return;
+        }
+
         const newScriptEl = document.createElement("script");
+        newScriptEl.setAttribute("amjs-processed", "");
         
         Array.from(oldScriptEl.attributes).forEach( attr => {
           newScriptEl.setAttribute(attr.name, attr.value) 
