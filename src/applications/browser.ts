@@ -1,6 +1,7 @@
 import { AppMock } from "../appmock";
 import { appendAttribute } from "../document/attributes";
 import { typeValue } from "../animation/animation";
+import browser from '../../css/applications/browser.module.scss';
 
 export class Browser extends AppMock {
     private _urlInput: HTMLInputElement | null = null;
@@ -8,18 +9,18 @@ export class Browser extends AppMock {
 
     constructor() { 
         super();
-        appendAttribute(this, 'class', 'browser-window');
-        appendAttribute(this, 'window-chrome-class', 'browser-window-chrome');
-        appendAttribute(this, 'window-content-class', 'browser-window-content');
+        appendAttribute(this, 'class', browser.browserWindow);
+        appendAttribute(this, 'window-chrome-class', browser.browserWindowChrome);
+        appendAttribute(this, 'window-content-class', browser.browserWindowContent);
     }
 
     renderChrome(): string {
         return `
-<div class="browser-controls-container">
-    <i class="fas fa-arrow-left browser-control"></i>
-    <i class="fas fa-arrow-right browser-control"></i>
+<div class="${browser.browserControlsContainer}">
+    <fa-left-arrow class="${browser.browserControl}"></fa-left-arrow>
+    <fa-right-arrow class="${browser.browserControl}"></fa-right-arrow>
 </div>
-<input type="text" class="browser-window-chrome-input" value="" readonly/>
+<input type="text" class="${browser.browserWindowChromeInput}" value="" readonly/>
 `
     }
 
@@ -29,7 +30,7 @@ export class Browser extends AppMock {
 
     urlInput(): HTMLInputElement {
         if (!this._urlInput) {
-            this._urlInput = this.querySelector('.browser-window-chrome-input');
+            this._urlInput = this.querySelector(browser.browserWindowChromeInput);
         }
         if (!this._urlInput) {
             throw new Error('url input not found');
@@ -39,7 +40,7 @@ export class Browser extends AppMock {
 
     content(): HTMLElement | null {
         if (!this._content) {
-            this._content = this.querySelector('.browser-window-content');
+            this._content = this.querySelector(browser.browserWindowContent);
         }
         return this._content;
     }
@@ -103,10 +104,6 @@ export class Browser extends AppMock {
 
     public set location(url: string) {
         this.url = url;
-        this.contentHTML = `<iframe class="browser-window-content" src="${url}"></iframe>`;
+        this.contentHTML = `<iframe class="${browser.browserWindowContent}" src="${url}"></iframe>`;
     }
-}
-
-export function initBrowser() {
-    customElements.define('amjs-browser', Browser);
 }

@@ -8,6 +8,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    background-color: white;
 }
 
 .window-fullscreen {
@@ -68,14 +69,17 @@
 }
 
 .red-dot {
+    @extend .dot;
     background-color: #f2321d;
 }
 
 .yellow-dot {
+    @extend .dot;
     background-color: #edcc14;
 }
 
 .green-dot {
+    @extend .dot;
     background-color: #20c520;
 }
 

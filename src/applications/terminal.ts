@@ -1,6 +1,8 @@
 import { AppMock } from "../appmock.js";
 import { appendAttribute } from "../document/attributes.js";
 import { typeText } from "../animation/animation.js";
+import terminal from '../../css/applications/terminal.module.scss';
+import window from '../../css/applications/window.module.scss';
 
 export class Terminal extends AppMock {
     private _ul: HTMLUListElement | null = null;
@@ -14,9 +16,8 @@ export class Terminal extends AppMock {
     constructor() {
         super();
 
-        appendAttribute(this, "class", "terminal-window");
-        appendAttribute(this, "window-chrome-class", "terminal-window-chrome");
-        appendAttribute(this, "window-content-class", "terminal-window-content");
+        appendAttribute(this, "class", terminal.terminalWindow);
+        appendAttribute(this, "window-content-class", terminal.terminalWindowContent);
 
         const attrPrompt = this.getAttribute("prompt");
         if (attrPrompt) {
@@ -39,12 +40,12 @@ export class Terminal extends AppMock {
         }
 
         return `
-<div class="window-chrome-button-container">
-    <div class="dot red-dot"></div>
-    <div class="dot yellow-dot"></div>
-    <div class="dot green-dot"></div>
+<div class="${window.windowChromeButtonContainer}">
+    <div class="${window.redDot}"></div>
+    <div class="${window.yellowDot}"></div>
+    <div class="${window.greenDot}"></div>
 </div>
-<span class="window-chrome-title">${title}</span>
+<span class="${window.windowChromeTitle}">${title}</span>
 `;
     }
 
@@ -53,13 +54,13 @@ export class Terminal extends AppMock {
         if (!this.innerHTML.trim()) {
             innerHTML = `<li>${this.wrappedPrompt()} ${this.wrappedCursor()}</li>`;
         }
-        return `<ul class="scrollbar">${innerHTML}</ul>`;
+        return `<ul class="${terminal.scrollbar}">${innerHTML}</ul>`;
     }
 
     protected postScript(): string {
         return `
     const script = document.currentScript;
-    const terminalWindow = getFirstParentWithClass(script, "terminal-window");
+    const terminalWindow = getFirstParentWithClass(script, "${terminal.terminalWindow}");
     const ul = terminalWindow.querySelector("ul");
     let shouldScrollToBottom = true;
 
@@ -98,16 +99,16 @@ export class Terminal extends AppMock {
         if (!this.blinkCursor) {
             return this.cursor;
         }
-        return `<span class="cursor not-selectable">${this.cursor}</span>`;
+        return `<span class="${terminal.cursor} ${window.notSelectable}">${this.cursor}</span>`;
     }
 
     private wrappedPrompt(): string {
-        return `<span class="not-selectable">${this.prompt}</span>`;
+        return `<span class="${window.notSelectable}">${this.prompt}</span>`;
     }
 
     public currentLine() {
         if (!this._currentLine) {
-            const contentChild = this.querySelector(".window-content");
+            const contentChild = this.querySelector(`.${window.windowContent}`);
             var li = contentChild?.querySelector("ul")?.lastElementChild as HTMLLIElement;
 
             if (!li) {
@@ -197,7 +198,3 @@ export class Terminal extends AppMock {
         return this.return();
     }
 };
-
-export function initTerminal() {
-    customElements.define("amjs-terminal", Terminal);
-}

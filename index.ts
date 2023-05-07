@@ -1,7 +1,7 @@
-import { initBrowser, Browser } from './src/applications/browser';
-import { initTerminal, Terminal } from './src/applications/terminal';
-import { initSmartphone, Smartphone } from './src/devices/smartphone';
-import { getFirstParentWithClass, activateScriptTags } from './src/document/document';
+import { registerApplications, Browser, Terminal } from './src/applications/applications';
+import { registerDevices, Smartphone, Laptop } from './src/devices/devices';
+import { getFirstParentWithClass } from './src/document/document';
+import { registerIcons } from './src/icons/icons';
 
 declare global {
     interface Window {
@@ -10,13 +10,14 @@ declare global {
         Terminal: typeof Terminal;
         Browser: typeof Browser;
         Smartphone: typeof Smartphone;
+        Laptop: typeof Laptop;
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    initBrowser();
-    initTerminal();
-    initSmartphone();
+    registerIcons();
+    registerDevices();
+    registerApplications();
     window.amjsMain();
 });
 
@@ -24,4 +25,5 @@ window.amjsMain = () => {};
 window.Terminal = Terminal;
 window.Browser = Browser;
 window.Smartphone = Smartphone;
+window.Laptop = Laptop;
 window.getFirstParentWithClass = getFirstParentWithClass;

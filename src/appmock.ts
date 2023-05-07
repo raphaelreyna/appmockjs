@@ -1,3 +1,5 @@
+import window from '../css/applications/window.module.scss';
+
 export abstract class AppMock extends HTMLElement {
     protected abstract renderChrome(): string;
     protected abstract renderContent(): string;
@@ -67,7 +69,7 @@ function stringifyAttributes(element: HTMLElement): windowAttributes {
             const name = attr.name.replace('window-chrome-', '');
             var value = attr.value;
             if (name === 'class' && !foundChromeClass) {
-                value += ' window-chrome';
+                value += ` ${window.windowChrome}`;
                 foundChromeClass = true;
             }
             wa.chrome += attributeToString(name, value);
@@ -76,25 +78,25 @@ function stringifyAttributes(element: HTMLElement): windowAttributes {
             const name = attr.name.replace('window-content-', '');
             var value = attr.value;
             if (name === 'class' && !foundContentClass) {
-                value += ' window-content';
+                value += ` ${window.windowContent}`;
                 foundContentClass = true;
             }
             wa.content += attributeToString(name, value);
             toRemove.push(attr);
         }  else {
             if (attr.name === 'class' && !foundWindowClass) {
-                attr.value += ' window';
+                attr.value += ` ${window.window}`;
                 foundWindowClass = true;
             }
         }
     }
 
     if (!foundChromeClass) {
-        wa.chrome = ' class="window-chrome"' + wa.chrome;
+        wa.chrome = ` class="${window.windowChrome}"` + wa.chrome;
     }
 
     if (!foundContentClass) {
-        wa.content = ' class="window-content"' + wa.content;
+        wa.content = ` class="${window.windowContent}"` + wa.content;
     }
 
     toRemove.forEach((attr) => element.removeAttributeNode(attr));

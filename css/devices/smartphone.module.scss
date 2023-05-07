@@ -54,6 +54,7 @@
     align-self: flex-end;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.1),
         0 0 25px rgba(255, 255, 255, 0.05);
+    background-color: white;
 }
 
 .smartphone-screen-off {
@@ -79,8 +80,11 @@
     justify-content: space-between;
     align-items: center;
     color: white;
+    fill: white;
+    stroke: white;
     font-size: 7px;
     font-family: Arial; 
+    position: relative;
 }
 
 .smartphone-bezel {
@@ -99,8 +103,21 @@
 
 .smartphone-status-bar-reception-bars {
     margin-left: 0.25rem;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 3px 0 3px 0;
+}
+
+.smartphone-status-bar-time {
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+    transform: translateY(25%);
 }
 
 .smartphone-status-bar-battery {
     margin-right: 0.25rem;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1px 0 1px 0;
 }

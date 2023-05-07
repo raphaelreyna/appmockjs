@@ -1,10 +1,12 @@
 {
-  "name": "appmockjs",
+  "name": "appmock-js",
   "version": "1.0.0",
   "description": "A toolkit for mocking and scripting apps on various devices in the browser.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "node ./build.mjs",
+    "build": "node ./build.mjs && npm run build-types",
+    "build-types": "tsc --declaration --emitDeclarationOnly",
     "dev-server": "npx http-server ."
   },
   "repository": {
@@ -18,13 +20,18 @@
   },
   "homepage": "https://github.com/raphaelreyna/appmockjs#readme",
   "devDependencies": {
+    "esbuild": "^0.17.18",
+    "esbuild-css-modules-plugin": "^2.7.1",
+    "esbuild-sass-plugin": "^2.9.0",
+    "esbuild-scss-modules-plugin": "^1.1.1",
     "http-server": "^14.1.1",
     "tsup": "^6.6.0",
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
     "@stardazed/streams-polyfill": "^2.4.0",
-    "esbuild": "0.17.6",
+    "fontawesome-free": "^1.0.4",
     "uglify-js": "^3.17.4"
   }
 }
