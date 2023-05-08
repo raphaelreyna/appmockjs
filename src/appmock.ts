@@ -4,8 +4,8 @@ export abstract class AppMock extends HTMLElement {
     protected abstract renderChrome(): string;
     protected abstract renderContent(): string;
 
-    constructor() { 
-        super(); 
+    constructor() {
+        super();
         if (this.hasAttribute('fullscreen')) {
             this.style.width = '100%';
             this.style.height = '100%';
@@ -30,21 +30,27 @@ export abstract class AppMock extends HTMLElement {
 
     private render(): string {
         const attrs = stringifyAttributes(this);
-        return `
+        var rndr = `
     <div ${attrs.chrome}>
         ${this.renderChrome()}
     </div>
     <div ${attrs.content}>
         ${this.renderContent()}
-    </div>
+    </div>`;
+
+        const ps = this.postScript();
+        if (ps) {
+            rndr += `
     <script>
         (function() {
-            ${this.postScript()}
+            ${ps}
         })();
-        const script = document.currentScript;
-        script.parentElement.removeChild(script);
+        document.currentScript.parentElement.removeChild(document.currentScript);
     </script>
-`;
+`
+        }
+
+        return rndr;
     }
 }
 
@@ -59,7 +65,7 @@ function stringifyAttributes(element: HTMLElement): windowAttributes {
         content: '',
     } as windowAttributes;
     const toRemove: Attr[] = [];
-  
+
     var foundWindowClass = false;
     var foundChromeClass = false;
     var foundContentClass = false;
@@ -83,7 +89,7 @@ function stringifyAttributes(element: HTMLElement): windowAttributes {
             }
             wa.content += attributeToString(name, value);
             toRemove.push(attr);
-        }  else {
+        } else {
             if (attr.name === 'class' && !foundWindowClass) {
                 attr.value += ` ${window.window}`;
                 foundWindowClass = true;
@@ -116,23 +122,23 @@ function attributeToString(name: string, value?: string): string {
 
 export function setInnerHTML(elm: HTMLElement, html: string) {
     elm.innerHTML = html;
-    
-    Array.from(elm.querySelectorAll("script"))
-      .forEach( oldScriptEl => {
-        if (oldScriptEl.hasAttribute("amjs-processed")) {
-            return;
-        }
 
-        const newScriptEl = document.createElement("script");
-        newScriptEl.setAttribute("amjs-processed", "");
-        
-        Array.from(oldScriptEl.attributes).forEach( attr => {
-          newScriptEl.setAttribute(attr.name, attr.value) 
+    Array.from(elm.querySelectorAll("script"))
+        .forEach(oldScriptEl => {
+            if (oldScriptEl.hasAttribute("amjs-processed")) {
+                return;
+            }
+
+            const newScriptEl = document.createElement("script");
+            newScriptEl.setAttribute("amjs-processed", "");
+
+            Array.from(oldScriptEl.attributes).forEach(attr => {
+                newScriptEl.setAttribute(attr.name, attr.value)
+            });
+
+            const scriptText = document.createTextNode(oldScriptEl.innerHTML);
+            newScriptEl.appendChild(scriptText);
+
+            oldScriptEl.parentNode?.replaceChild(newScriptEl, oldScriptEl);
         });
-        
-        const scriptText = document.createTextNode(oldScriptEl.innerHTML);
-        newScriptEl.appendChild(scriptText);
-        
-        oldScriptEl.parentNode?.replaceChild(newScriptEl, oldScriptEl);
-    });
-  }
+}

@@ -12,7 +12,7 @@ export class Browser extends AppMock {
         appendAttribute(this, 'class', browser.browserWindow);
         appendAttribute(this, 'window-chrome-class', browser.browserWindowChrome);
         appendAttribute(this, 'window-content-class', browser.browserWindowContent);
-    }
+    } 
 
     renderChrome(): string {
         return `
@@ -30,7 +30,7 @@ export class Browser extends AppMock {
 
     urlInput(): HTMLInputElement {
         if (!this._urlInput) {
-            this._urlInput = this.querySelector(browser.browserWindowChromeInput);
+            this._urlInput = this.querySelector(`.${browser.browserWindowChromeInput}`);
         }
         if (!this._urlInput) {
             throw new Error('url input not found');
@@ -40,7 +40,7 @@ export class Browser extends AppMock {
 
     content(): HTMLElement | null {
         if (!this._content) {
-            this._content = this.querySelector(browser.browserWindowContent);
+            this._content = this.querySelector(`.${browser.browserWindowContent}`);
         }
         return this._content;
     }
