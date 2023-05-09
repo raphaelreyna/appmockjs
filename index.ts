@@ -27,3 +27,5 @@ window.Browser = Browser;
 window.Smartphone = Smartphone;
 window.Laptop = Laptop;
 window.getFirstParentWithClass = getFirstParentWithClass;
+
+export { Terminal, Browser, Smartphone, Laptop };
